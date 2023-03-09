@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tower.png" type="Texture" id=1]
+[ext_resource path="res://tower_head.png" type="Texture" id=2]
+[ext_resource path="res://Tårn.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 57.0088
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="Tårn" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Tårn" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": " "
+}
+
+[node name="Tårn-hovede" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="range" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="box" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource( 2 )
