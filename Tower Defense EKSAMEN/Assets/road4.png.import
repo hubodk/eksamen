@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tower.png-6d542b8347d8353639a26fbe0e398a9d.stex"
+path="res://.import/road4.png-196c6f8cee6b43cfea9906180f376a00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tower.png"
-dest_files=[ "res://.import/tower.png-6d542b8347d8353639a26fbe0e398a9d.stex" ]
+source_file="res://Assets/road4.png"
+dest_files=[ "res://.import/road4.png-196c6f8cee6b43cfea9906180f376a00.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,8 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
