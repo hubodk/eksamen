@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/parkering.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.25, 1.25 )
+extents = Vector2( 1, 1 )
 
 [node name="BuildingPlatform" type="Area2D" groups=["AddPlatform"]]
 

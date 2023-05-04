@@ -60,7 +60,7 @@ custom_fonts/font = SubResource( 3 )
 text = "Cash: 10"
 align = 2
 
-[node name="TextureButton" type="TextureButton" parent="GUI"]
+[node name="tower1" type="TextureButton" parent="GUI"]
 margin_left = 220.0
 margin_top = 3.0
 margin_right = 252.0
@@ -70,12 +70,11 @@ texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
 expand = true
 
-[node name="TextureButton1" type="TextureButton" parent="GUI"]
-visible = false
-margin_left = 173.0
-margin_top = 97.0
-margin_right = 205.0
-margin_bottom = 134.0
+[node name="tower2" type="TextureButton" parent="GUI"]
+margin_left = 185.0
+margin_top = 3.0
+margin_right = 217.0
+margin_bottom = 40.0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 13 )
@@ -89,11 +88,10 @@ margin_bottom = 49.0
 text = "25"
 
 [node name="pricelabel2" type="Label" parent="GUI"]
-visible = false
-margin_left = 182.0
-margin_top = 136.0
-margin_right = 198.0
-margin_bottom = 150.0
+margin_left = 193.0
+margin_top = 35.0
+margin_right = 209.0
+margin_bottom = 49.0
 text = "50"
 
 [node name="BuildingPlatform6" parent="." instance=ExtResource( 1 )]
@@ -119,5 +117,5 @@ position = Vector2( 43, 15 )
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
-[connection signal="pressed" from="GUI/TextureButton" to="." method="_on_TextureButton_pressed"]
-[connection signal="pressed" from="GUI/TextureButton1" to="." method="_on_TextureButton1_pressed"]
+[connection signal="pressed" from="GUI/tower1" to="." method="_on_tower1_pressed"]
+[connection signal="pressed" from="GUI/tower2" to="." method="_on_tower2_pressed"]

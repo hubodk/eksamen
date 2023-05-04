@@ -1,13 +1,13 @@
 extends Node2D
 
 var tower = preload("res://Scenes/Tower.tscn") #tower loader tower scenen
-var tower1 = preload("res://Scenes/Tower1.tscn") #tower1 loader tower1 scenen
+var tower2 = preload("res://Scenes/Tower2.tscn")
 var mob = preload("res://Scenes/Enemy.tscn") #mob/fjende loader fjende scenen.
 var instance #en instance fx et dyr, men indenfor dyr kan det være hund, kat eller løve osv.
 
 var building = false #variabel der fortæller at man ikke kan bygge i det her område
 
-var money = 25 #variabel der fortæller hvor mange penge man har tilbage, man starter på 25 penge.
+var money = 50 #variabel der fortæller hvor mange penge man har tilbage, man starter på 25 penge.
 var wave = 0 #variabel der fortæller hvad runde man er på
 var mobs_left = 0 #variabel der fortæller hvor mange fjender der er tilbage
 var wave_mobs = [1,1,5,10,100,0] #tabel der viser antal fjender i hver runde, ny runde efter hver komma.
@@ -15,12 +15,15 @@ var wave_speed = [1.2,1,1,1,0.1,100] #tabel der viser hastiheden af fjenderne
 
 #funktion er et stykke kode der kan bruges om og om igen istedet skrive det igen.
 
-func _ready():
-	$WaveTimer.start() #funktionen er klar, og starter wave timeren
-
 func _process(delta): #_process(delta) er noget der sker hver eneste frame i spillet da spillet kører 60 frames per sekund.
 	$GUI/CashLabel.text = "Cash: " + str(money) #hver eneste frame bliver penge labelen opdateret med det antal penge man har.
 # GUI = graphical user interface
+
+func get_money():
+	return money
+
+func _ready():
+	$WaveTimer.start() #funktionen er klar, og starter wave timeren
 
 func add_money(amount): #add_money er en funktion der styrer en paramter som er "amount" som er mængden af penge som bliver tilføjet til den første variabel som er money i starten af koden.
 	money += amount #penge bliver plusset med ammount ergo = alle penge samlet
@@ -28,7 +31,9 @@ func add_money(amount): #add_money er en funktion der styrer en paramter som er 
 func tower_built(): #funktionen hedder byg tårn altså tower_built at tårnet er blevet bygget
 	building = false #når funktionen bliver kaldt på så siger den at bygning bliver "false" så den ikke dur mere og den reducere penge variablen med 25, altså at man mister 25 for at bygge bygningen.
 	money -= 25
-
+func tower2_built(): #funktionen hedder byg tårn altså tower_built at tårnet er blevet bygget
+	building = false #når funktionen bliver kaldt på så siger den at bygning bliver "false" så den ikke dur mere og den reducere penge variablen med 25, altså at man mister 25 for at bygge bygningen.
+	money -= 50
 
 
 func _on_WaveTimer_timeout(): #funktionen hedder _on_wavetimer_timeout hvilket vil sige  det er en "callback" funktion som bliver kaldt på når en timer node der hedder "wavetimer" bliver timed out altså færdig med at tælle. Det bruger for at implementere et runde system i spillet.
@@ -49,15 +54,16 @@ func _on_MobTimer_timeout(): #funktionen hedder _on_mobtimer_timeout som er en f
 		else:
 			get_tree().change_scene("res://Scenes/Win.tscn") #Hvis der ikke er flere waves at spawn så kommer skærmen "you win" frem hvilket betyder man har vundet.
 
-func _on_TextureButton_pressed(): #funktionen hedder _on_texturebutton_pressed
+func _on_tower1_pressed(): #funktionen hedder _on_texturebutton_pressed
 	if building == false and money >= 25: #Her bliver det tjekket for om der allerede ved at blive bygget et tårn, det betyder hvis du igang med at bygge et tårn kan du ikke bygge et mere på samme tid. og hvis du har under 25 kan du ikke bygge et tårn.
 		instance = tower.instance() #laver instance som holder tårn instance, altså et træ af ting tårnet gør.
 		add_child(instance) #der bliver tilføjet et barn til instancen med tårnet
 		building = true #så når man trykker på knappen kan man godt bygge tårnet fordi den er "true"
 
-func _on_TextureButton1_pressed(): #her bliver der lavet en ny funktion som så er præcis det samme som længere oppe bare med en ny knap til et nyt slags tårn.
-	if building == false and money >= 50: #tårnet her koster 50, og hvis man ikke har mere end 50 kan man ikke bygge det
-		instance = tower1.instance() 
-		add_child(instance) #der bliver tilføjet en child note til instance af tårnet
-		building = true #bygge variablen bliver sat til "true" så nu er det muligt at bygge tårnet efter at trykke på knappen.
+func _on_tower2_pressed():
+	if building == false and money >= 50: #Her bliver det tjekket for om der allerede ved at blive bygget et tårn, det betyder hvis du igang med at bygge et tårn kan du ikke bygge et mere på samme tid. og hvis du har under 25 kan du ikke bygge et tårn.
+		instance = tower2.instance() #laver instance som holder tårn instance, altså et træ af ting tårnet gør.
+		add_child(instance) #der bliver tilføjet et barn til instancen med tårnet
+		building = true #så når man trykker på knappen kan man godt bygge tårnet fordi den er "true"
+
 

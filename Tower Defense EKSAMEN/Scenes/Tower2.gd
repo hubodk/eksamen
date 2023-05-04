@@ -1,8 +1,8 @@
 extends Node2D
 
-onready var Tower1 = $Tower1
-onready var TowerHead1 = $Tower_Head1
-var bullet1 = preload("res://Scenes/Bullet1.tscn")
+onready var Tower = $Tower2
+onready var TowerHead = $Tower_Head2
+var bullet = preload("res://Scenes/Bullet2.tscn")
 
 var enemies = []
 
@@ -16,7 +16,7 @@ func _physics_process(delta):
 		$Range.visible = false
 		if enemies != []:
 			current_enemy = enemies[0]
-			TowerHead1.look_at(current_enemy.global_position)
+			TowerHead.look_at(current_enemy.global_position)
 	else:
 		$Range.visible = true
 		global_position = get_global_mouse_position()
@@ -24,7 +24,7 @@ func _physics_process(delta):
 			$Range.modulate = Color(0,0,0)
 			if Input.is_action_just_pressed("click"):
 				building = false
-				get_parent().tower1_built()
+				get_parent().tower2_built()
 		else:
 			$Range.modulate =  Color(1, 1, 1)
 		
@@ -47,7 +47,7 @@ func _on_ShootTimer_timeout():
 		if current_enemy:
 			if enemies:
 				if current_enemy == enemies[0]:
-					var b = bullet1.instance()
+					var b = bullet.instance()
 					b.global_position = global_position
 					b.target = current_enemy
 					get_parent().add_child(b)
