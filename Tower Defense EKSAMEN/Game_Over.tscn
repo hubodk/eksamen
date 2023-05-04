@@ -1,0 +1,12 @@
+[gd_scene format=2]
+
+[node name="Game_Over" type="Node2D"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_top = -10.0
+margin_right = 256.0
+margin_bottom = 149.0
+text = "             
+			
+			
+			           GAMEOVER"

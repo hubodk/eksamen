@@ -6,7 +6,7 @@ var mob = preload("res://Scenes/Enemy.tscn") #mob/fjende loader fjende scenen.
 var instance #en instance fx et dyr, men indenfor dyr kan det være hund, kat eller løve osv.
 
 var building = false #variabel der fortæller at man ikke kan bygge i det her område
-
+var lives = 3
 var money = 50 #variabel der fortæller hvor mange penge man har tilbage, man starter på 25 penge.
 var wave = 0 #variabel der fortæller hvad runde man er på
 var mobs_left = 0 #variabel der fortæller hvor mange fjender der er tilbage
@@ -65,5 +65,11 @@ func _on_tower2_pressed():
 		instance = tower2.instance() #laver instance som holder tårn instance, altså et træ af ting tårnet gør.
 		add_child(instance) #der bliver tilføjet et barn til instancen med tårnet
 		building = true #så når man trykker på knappen kan man godt bygge tårnet fordi den er "true"
+
+
+func lose_life():
+	lives -= 1
+	if lives == 0:
+		get_tree().change_scene("res://Scenes/Game_Over.tscn")
 
 
